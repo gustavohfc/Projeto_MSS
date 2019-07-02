@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_test_h
-#define __simple_bus_test_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_master_blocking.h"
 #include "simple_bus_master_non_blocking.h"
@@ -104,5 +101,3 @@ SC_MODULE(simple_bus_test)
   }
 
 }; // end class simple_bus_test
-
-#endif

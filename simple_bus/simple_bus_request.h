@@ -35,8 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_request_h
-#define __simple_bus_request_h
+#pragma once
 
 enum simple_bus_lock_status { SIMPLE_BUS_LOCK_NO = 0
 			      , SIMPLE_BUS_LOCK_SET
@@ -72,5 +71,3 @@ inline simple_bus_request::simple_bus_request()
   , lock(SIMPLE_BUS_LOCK_NO)
   , status(SIMPLE_BUS_OK)
 {}
-
-#endif

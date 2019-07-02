@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_non_blocking_if_h
-#define __simple_bus_non_blocking_if_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 
@@ -59,5 +56,3 @@ public:
   virtual simple_bus_status get_status(unsigned int unique_priority) = 0;
 
 }; // end class simple_bus_non_blocking_if
-
-#endif

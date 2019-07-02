@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_arbiter_h
-#define __simple_bus_arbiter_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 #include "simple_bus_request.h"
@@ -63,5 +60,3 @@ private:
   bool m_verbose;
 
 }; // end class simple_bus_arbiter
-
-#endif

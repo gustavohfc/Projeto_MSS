@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_master_blocking_h
-#define __simple_bus_master_blocking_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 #include "simple_bus_blocking_if.h"
@@ -79,5 +76,3 @@ private:
   int m_timeout;
 
 }; // end class simple_bus_master_blocking
-
-#endif

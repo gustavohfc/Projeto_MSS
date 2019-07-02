@@ -35,11 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_types_h
-#define __simple_bus_types_h
-
-#include <stdio.h>
-#include <systemc.h>
+#pragma once
 
 enum simple_bus_status { SIMPLE_BUS_OK = 0
 			 , SIMPLE_BUS_REQUEST
@@ -53,5 +49,3 @@ struct simple_bus_request;
 typedef std::vector<simple_bus_request *> simple_bus_request_vec;
 
 extern int sb_fprintf(FILE *, const char *, ...);
-
-#endif

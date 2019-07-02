@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_fast_mem_h
-#define __simple_bus_fast_mem_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 #include "simple_bus_slave_if.h"
@@ -125,5 +122,3 @@ inline unsigned int simple_bus_fast_mem::end_address() const
 {
   return m_end_address;
 }
-
-#endif

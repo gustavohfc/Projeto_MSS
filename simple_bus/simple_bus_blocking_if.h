@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_blocking_if_h
-#define __simple_bus_blocking_if_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 
@@ -59,5 +56,3 @@ public:
 					, bool lock = false) = 0;
 
 }; // end class simple_bus_blocking_if
-
-#endif

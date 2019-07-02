@@ -41,10 +41,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_h
-#define __simple_bus_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 #include "simple_bus_request.h"
@@ -126,5 +123,3 @@ private:
   simple_bus_request *m_current_request;
 
 }; // end class simple_bus
-
-#endif

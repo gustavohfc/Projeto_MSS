@@ -36,10 +36,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_master_direct_h
-#define __simple_bus_master_direct_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_direct_if.h"
 
@@ -75,5 +72,3 @@ private:
   bool m_verbose;
 
 }; // end class simple_bus_master_direct
-
-#endif

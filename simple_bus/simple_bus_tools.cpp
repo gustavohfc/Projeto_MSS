@@ -36,9 +36,6 @@
  *****************************************************************************/
 
 #include "pch.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <errno.h>
 
 int sb_fprintf(FILE *fp, const char *fmt, ...)
 {

@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_arbiter_if_h
-#define __simple_bus_arbiter_if_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 
@@ -51,5 +48,3 @@ public:
     arbitrate(const simple_bus_request_vec &requests) = 0;
 
 }; // end class simple_bus_arbiter_if
-
-#endif

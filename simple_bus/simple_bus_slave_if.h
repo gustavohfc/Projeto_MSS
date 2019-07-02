@@ -35,10 +35,7 @@
  
  *****************************************************************************/
 
-#ifndef __simple_bus_slave_if_h
-#define __simple_bus_slave_if_h
-
-#include <systemc.h>
+#pragma once
 
 #include "simple_bus_types.h"
 #include "simple_bus_direct_if.h"
@@ -57,4 +54,3 @@ public:
 
 }; // end class simple_bus_slave_if
 
-#endif
