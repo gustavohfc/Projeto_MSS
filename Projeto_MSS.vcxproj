@@ -93,7 +93,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <AdditionalOptions>/vmg</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);$(SolutionDir);$(SolutionDir)simple_bus;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableLanguageExtensions>true</DisableLanguageExtensions>
     </ClCompile>
     <Link>
@@ -114,7 +114,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <AdditionalOptions>/vmg</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);$(SolutionDir);$(SolutionDir)simple_bus;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,7 +136,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <AdditionalOptions>/vmg</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);$(SolutionDir);$(SolutionDir)simple_bus;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,7 +160,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <AdditionalOptions>/vmg</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SYSTEMC_SRC_DIR);$(SolutionDir);$(SolutionDir)simple_bus;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -172,6 +172,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="hash\hash_constants.h" />
+    <ClInclude Include="hash\hash_module.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="simple_bus\simple_bus.h" />
     <ClInclude Include="simple_bus\simple_bus_arbiter.h" />
@@ -187,6 +189,7 @@
     <ClInclude Include="simple_bus\simple_bus_types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="hash\hash_module.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

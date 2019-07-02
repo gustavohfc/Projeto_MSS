@@ -73,19 +73,19 @@ SC_MODULE(simple_bus_test) {
 	~simple_bus_test() {
 		if (mem_slow) {
 			delete mem_slow;
-			mem_slow = 0;
+			mem_slow = nullptr;
 		}
 		if (bus) {
 			delete bus;
-			bus = 0;
+			bus = nullptr;
 		}
 		if (mem_fast) {
 			delete mem_fast;
-			mem_fast = 0;
+			mem_fast = nullptr;
 		}
 		if (arbiter) {
 			delete arbiter;
-			arbiter = 0;
+			arbiter = nullptr;
 		}
 	}
 

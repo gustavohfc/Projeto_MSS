@@ -288,28 +288,28 @@ void simple_bus::handle_request() {
 		sb_fprintf(stdout, "  --> status=(%s)\n", simple_bus_status_str[slave_status]);
 
 	switch (slave_status) {
-	case SIMPLE_BUS_ERROR:
-		m_current_request->status = SIMPLE_BUS_ERROR;
-		m_current_request->transfer_done.notify();
-		m_current_request = (simple_bus_request*)0;
-		break;
-	case SIMPLE_BUS_OK:
-		m_current_request->address += 4; //next word (byte addressing)
-		m_current_request->data++;
-		if (m_current_request->address > m_current_request->end_address) {
-			// burst-transfer (or single transfer) completed
-			m_current_request->status = SIMPLE_BUS_OK;
+		case SIMPLE_BUS_ERROR:
+			m_current_request->status = SIMPLE_BUS_ERROR;
 			m_current_request->transfer_done.notify();
 			m_current_request = (simple_bus_request*)0;
-		} else { // more data to transfer, but the (atomic) slave transfer is done
-			m_current_request = (simple_bus_request*)0;
-		}
-		break;
-	case SIMPLE_BUS_WAIT:
-		// the slave is still processing: no clearance of the current request
-		break;
-	default:
-		break;
+			break;
+		case SIMPLE_BUS_OK:
+			m_current_request->address += 4; //next word (byte addressing)
+			m_current_request->data++;
+			if (m_current_request->address > m_current_request->end_address) {
+				// burst-transfer (or single transfer) completed
+				m_current_request->status = SIMPLE_BUS_OK;
+				m_current_request->transfer_done.notify();
+				m_current_request = (simple_bus_request*)0;
+			} else { // more data to transfer, but the (atomic) slave transfer is done
+				m_current_request = (simple_bus_request*)0;
+			}
+			break;
+		case SIMPLE_BUS_WAIT:
+			// the slave is still processing: no clearance of the current request
+			break;
+		default:
+			break;
 	}
 }
 
