@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_types.h : The common types.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -37,8 +37,5 @@
 
 #include "pch.h"
 
-   // only needed for more readable debug output
-char simple_bus_status_str[4][20] = { "SIMPLE_BUS_OK"
-									  , "SIMPLE_BUS_REQUEST"
-									  , "SIMPLE_BUS_WAIT"
-									  , "SIMPLE_BUS_ERROR" };
+// only needed for more readable debug output
+char simple_bus_status_str[4][20] = { "SIMPLE_BUS_OK", "SIMPLE_BUS_REQUEST", "SIMPLE_BUS_WAIT", "SIMPLE_BUS_ERROR" };

@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_fast_mem.h : The memory (slave) without wait states.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -40,20 +40,15 @@
 #include "simple_bus_types.h"
 #include "simple_bus_slave_if.h"
 
-
 class simple_bus_fast_mem
-	: public simple_bus_slave_if
-	, public sc_module
-{
+    : public simple_bus_slave_if,
+      public sc_module {
 public:
 	// constructor
-	simple_bus_fast_mem(sc_module_name name_
-		, unsigned int start_address
-		, unsigned int end_address)
-		: sc_module(name_)
-		, m_start_address(start_address)
-		, m_end_address(end_address)
-	{
+	simple_bus_fast_mem(sc_module_name name_, unsigned int start_address, unsigned int end_address)
+	    : sc_module(name_)
+	    , m_start_address(start_address)
+	    , m_end_address(end_address) {
 		sc_assert(m_start_address <= m_end_address);
 		sc_assert((m_end_address - m_start_address + 1) % 4 == 0);
 		unsigned int size = (m_end_address - m_start_address + 1) / 4;
@@ -83,42 +78,34 @@ private:
 
 }; // end class simple_bus_fast_mem
 
-inline bool simple_bus_fast_mem::direct_read(int* data, unsigned int address)
-{
+inline bool simple_bus_fast_mem::direct_read(int* data, unsigned int address) {
 	return (read(data, address) == SIMPLE_BUS_OK);
 }
 
-inline bool simple_bus_fast_mem::direct_write(int* data, unsigned int address)
-{
+inline bool simple_bus_fast_mem::direct_write(int* data, unsigned int address) {
 	return (write(data, address) == SIMPLE_BUS_OK);
 }
 
-inline simple_bus_status simple_bus_fast_mem::read(int* data
-	, unsigned int address)
-{
+inline simple_bus_status simple_bus_fast_mem::read(int* data, unsigned int address) {
 	*data = MEM[(address - m_start_address) / 4];
 	return SIMPLE_BUS_OK;
 }
 
-inline simple_bus_status simple_bus_fast_mem::write(int* data
-	, unsigned int address)
-{
+inline simple_bus_status simple_bus_fast_mem::write(int* data, unsigned int address) {
 	MEM[(address - m_start_address) / 4] = *data;
 	return SIMPLE_BUS_OK;
 }
 
-inline  simple_bus_fast_mem::~simple_bus_fast_mem()
-{
-	if (MEM) delete[] MEM;
+inline simple_bus_fast_mem::~simple_bus_fast_mem() {
+	if (MEM)
+		delete[] MEM;
 	MEM = (int*)0;
 }
 
-inline unsigned int simple_bus_fast_mem::start_address() const
-{
+inline unsigned int simple_bus_fast_mem::start_address() const {
 	return m_start_address;
 }
 
-inline unsigned int simple_bus_fast_mem::end_address() const
-{
+inline unsigned int simple_bus_fast_mem::end_address() const {
 	return m_end_address;
 }

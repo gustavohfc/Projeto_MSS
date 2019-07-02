@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_request.h : The bus interface request form.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -38,13 +38,12 @@
 #pragma once
 
 enum simple_bus_lock_status {
-	SIMPLE_BUS_LOCK_NO = 0
-	, SIMPLE_BUS_LOCK_SET
-	, SIMPLE_BUS_LOCK_GRANTED
+	SIMPLE_BUS_LOCK_NO = 0,
+	SIMPLE_BUS_LOCK_SET,
+	SIMPLE_BUS_LOCK_GRANTED
 };
 
-struct simple_bus_request
-{
+struct simple_bus_request {
 	// parameters
 	unsigned int priority;
 
@@ -64,11 +63,10 @@ struct simple_bus_request
 };
 
 inline simple_bus_request::simple_bus_request()
-	: priority(0)
-	, do_write(false)
-	, address(0)
-	, end_address(0)
-	, data((int*)0)
-	, lock(SIMPLE_BUS_LOCK_NO)
-	, status(SIMPLE_BUS_OK)
-{}
+    : priority(0)
+    , do_write(false)
+    , address(0)
+    , end_address(0)
+    , data((int*)0)
+    , lock(SIMPLE_BUS_LOCK_NO)
+    , status(SIMPLE_BUS_OK) {}

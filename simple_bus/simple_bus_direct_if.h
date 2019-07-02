@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_direct_if.h : The direct BUS/Slave interface.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -38,8 +38,7 @@
 #pragma once
 
 class simple_bus_direct_if
-	: public virtual sc_interface
-{
+    : public virtual sc_interface {
 public:
 	// direct BUS/Slave interface
 	virtual bool direct_read(int* data, unsigned int address) = 0;

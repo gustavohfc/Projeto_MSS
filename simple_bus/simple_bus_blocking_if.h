@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_blocking_if.h : The blocking bus interface.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -40,19 +40,10 @@
 #include "simple_bus_types.h"
 
 class simple_bus_blocking_if
-	: public virtual sc_interface
-{
+    : public virtual sc_interface {
 public:
 	// blocking BUS interface
-	virtual simple_bus_status burst_read(unsigned int unique_priority
-		, int* data
-		, unsigned int start_address
-		, unsigned int length = 1
-		, bool lock = false) = 0;
-	virtual simple_bus_status burst_write(unsigned int unique_priority
-		, int* data
-		, unsigned int start_address
-		, unsigned int length = 1
-		, bool lock = false) = 0;
+	virtual simple_bus_status burst_read(unsigned int unique_priority, int* data, unsigned int start_address, unsigned int length = 1, bool lock = false) = 0;
+	virtual simple_bus_status burst_write(unsigned int unique_priority, int* data, unsigned int start_address, unsigned int length = 1, bool lock = false) = 0;
 
 }; // end class simple_bus_blocking_if

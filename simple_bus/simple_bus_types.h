@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_types.h : The common types.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -38,10 +38,10 @@
 #pragma once
 
 enum simple_bus_status {
-	SIMPLE_BUS_OK = 0
-	, SIMPLE_BUS_REQUEST
-	, SIMPLE_BUS_WAIT
-	, SIMPLE_BUS_ERROR
+	SIMPLE_BUS_OK = 0,
+	SIMPLE_BUS_REQUEST,
+	SIMPLE_BUS_WAIT,
+	SIMPLE_BUS_ERROR
 };
 
 // needed for more readable debug output

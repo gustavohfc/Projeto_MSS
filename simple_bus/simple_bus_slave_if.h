@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_slave_if.h : The Slave interface.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -40,10 +40,8 @@
 #include "simple_bus_types.h"
 #include "simple_bus_direct_if.h"
 
-
 class simple_bus_slave_if
-	: public simple_bus_direct_if
-{
+    : public simple_bus_direct_if {
 public:
 	// Slave interface
 	virtual simple_bus_status read(int* data, unsigned int address) = 0;
@@ -53,4 +51,3 @@ public:
 	virtual unsigned int end_address() const = 0;
 
 }; // end class simple_bus_slave_if
-

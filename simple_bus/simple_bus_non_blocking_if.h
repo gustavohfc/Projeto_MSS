@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_non_blocking_if.h : The non-blocking BUS interface.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -40,18 +40,11 @@
 #include "simple_bus_types.h"
 
 class simple_bus_non_blocking_if
-	: public virtual sc_interface
-{
+    : public virtual sc_interface {
 public:
 	// non-blocking BUS interface
-	virtual void read(unsigned int unique_priority
-		, int* data
-		, unsigned int address
-		, bool lock = false) = 0;
-	virtual void write(unsigned int unique_priority
-		, int* data
-		, unsigned int address
-		, bool lock = false) = 0;
+	virtual void read(unsigned int unique_priority, int* data, unsigned int address, bool lock = false) = 0;
+	virtual void write(unsigned int unique_priority, int* data, unsigned int address, bool lock = false) = 0;
 
 	virtual simple_bus_status get_status(unsigned int unique_priority) = 0;
 

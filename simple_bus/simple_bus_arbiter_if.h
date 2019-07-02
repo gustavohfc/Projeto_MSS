@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_arbiter_if.h : The arbiter interface.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -39,12 +39,11 @@
 
 #include "simple_bus_types.h"
 
-
 class simple_bus_arbiter_if
-	: public virtual sc_interface
-{
+    : public virtual sc_interface {
 public:
 	virtual simple_bus_request*
-		arbitrate(const simple_bus_request_vec& requests) = 0;
+	arbitrate(const simple_bus_request_vec& requests)
+	    = 0;
 
 }; // end class simple_bus_arbiter_if

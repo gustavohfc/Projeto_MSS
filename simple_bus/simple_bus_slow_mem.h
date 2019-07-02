@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_slow_mem.h : Slave : The memory (slave) with wait states.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -40,11 +40,9 @@
 #include "simple_bus_types.h"
 #include "simple_bus_slave_if.h"
 
-
 class simple_bus_slow_mem
-	: public simple_bus_slave_if
-	, public sc_module
-{
+    : public simple_bus_slave_if,
+      public sc_module {
 public:
 	// ports
 	sc_in_clk clock;
@@ -52,16 +50,12 @@ public:
 	SC_HAS_PROCESS(simple_bus_slow_mem);
 
 	// constructor
-	simple_bus_slow_mem(sc_module_name name_
-		, unsigned int start_address
-		, unsigned int end_address
-		, unsigned int nr_wait_states)
-		: sc_module(name_)
-		, m_start_address(start_address)
-		, m_end_address(end_address)
-		, m_nr_wait_states(nr_wait_states)
-		, m_wait_count(-1)
-	{
+	simple_bus_slow_mem(sc_module_name name_, unsigned int start_address, unsigned int end_address, unsigned int nr_wait_states)
+	    : sc_module(name_)
+	    , m_start_address(start_address)
+	    , m_end_address(end_address)
+	    , m_nr_wait_states(nr_wait_states)
+	    , m_wait_count(-1) {
 		// process declaration
 		SC_METHOD(wait_loop);
 		dont_initialize();
@@ -101,70 +95,57 @@ private:
 
 }; // end class simple_bus_slow_mem
 
-inline  simple_bus_slow_mem::~simple_bus_slow_mem()
-{
-	if (MEM) delete[] MEM;
+inline simple_bus_slow_mem::~simple_bus_slow_mem() {
+	if (MEM)
+		delete[] MEM;
 	MEM = (int*)0;
 }
 
-inline void simple_bus_slow_mem::wait_loop()
-{
-	if (m_wait_count >= 0) m_wait_count--;
+inline void simple_bus_slow_mem::wait_loop() {
+	if (m_wait_count >= 0)
+		m_wait_count--;
 }
 
-inline bool simple_bus_slow_mem::direct_read(int* data, unsigned int address)
-{
+inline bool simple_bus_slow_mem::direct_read(int* data, unsigned int address) {
 	*data = MEM[(address - m_start_address) / 4];
 	return true;
 }
 
-inline bool simple_bus_slow_mem::direct_write(int* data, unsigned int address)
-{
+inline bool simple_bus_slow_mem::direct_write(int* data, unsigned int address) {
 	MEM[(address - m_start_address) / 4] = *data;
 	return true;
 }
 
-inline simple_bus_status simple_bus_slow_mem::read(int* data
-	, unsigned int address)
-{
+inline simple_bus_status simple_bus_slow_mem::read(int* data, unsigned int address) {
 	// accept a new call if m_wait_count < 0)
-	if (m_wait_count < 0)
-	{
+	if (m_wait_count < 0) {
 		m_wait_count = m_nr_wait_states;
 		return SIMPLE_BUS_WAIT;
 	}
-	if (m_wait_count == 0)
-	{
+	if (m_wait_count == 0) {
 		*data = MEM[(address - m_start_address) / 4];
 		return SIMPLE_BUS_OK;
 	}
 	return SIMPLE_BUS_WAIT;
 }
 
-inline simple_bus_status simple_bus_slow_mem::write(int* data
-	, unsigned int address)
-{
+inline simple_bus_status simple_bus_slow_mem::write(int* data, unsigned int address) {
 	// accept a new call if m_wait_count < 0)
-	if (m_wait_count < 0)
-	{
+	if (m_wait_count < 0) {
 		m_wait_count = m_nr_wait_states;
 		return SIMPLE_BUS_WAIT;
 	}
-	if (m_wait_count == 0)
-	{
+	if (m_wait_count == 0) {
 		MEM[(address - m_start_address) / 4] = *data;
 		return SIMPLE_BUS_OK;
 	}
 	return SIMPLE_BUS_WAIT;
 }
 
-
-inline unsigned int simple_bus_slow_mem::start_address() const
-{
+inline unsigned int simple_bus_slow_mem::start_address() const {
 	return m_start_address;
 }
 
-inline unsigned int simple_bus_slow_mem::end_address() const
-{
+inline unsigned int simple_bus_slow_mem::end_address() const {
 	return m_end_address;
 }

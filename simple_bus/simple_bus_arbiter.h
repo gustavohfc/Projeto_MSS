@@ -17,7 +17,7 @@
 
  *****************************************************************************/
 
- /*****************************************************************************
+/*****************************************************************************
 
    simple_bus_arbiter.h : The arbitration unit.
 
@@ -25,7 +25,7 @@
 
   *****************************************************************************/
 
-  /*****************************************************************************
+/*****************************************************************************
 
 	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
 	changes you are making here.
@@ -41,18 +41,14 @@
 #include "simple_bus_request.h"
 #include "simple_bus_arbiter_if.h"
 
-
 class simple_bus_arbiter
-	: public simple_bus_arbiter_if
-	, public sc_module
-{
+    : public simple_bus_arbiter_if,
+      public sc_module {
 public:
 	// constructor
-	simple_bus_arbiter(sc_module_name name_
-		, bool verbose = false)
-		: sc_module(name_)
-		, m_verbose(verbose)
-	{}
+	simple_bus_arbiter(sc_module_name name_, bool verbose = false)
+	    : sc_module(name_)
+	    , m_verbose(verbose) {}
 
 	simple_bus_request* arbitrate(const simple_bus_request_vec& requests);
 
