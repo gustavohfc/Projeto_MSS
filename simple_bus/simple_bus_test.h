@@ -7,7 +7,7 @@
   (the "License"); you may not use this file except in compliance with the
   License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,23 +17,23 @@
 
  *****************************************************************************/
 
-/*****************************************************************************
- 
-  simple_bus_test.h : The test bench.
- 
-  Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
- 
- *****************************************************************************/
- 
-/*****************************************************************************
- 
-  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
-  changes you are making here.
- 
-      Name, Affiliation, Date:
-  Description of Modification:
- 
- *****************************************************************************/
+ /*****************************************************************************
+
+   simple_bus_test.h : The test bench.
+
+   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
+
+  *****************************************************************************/
+
+  /*****************************************************************************
+
+	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+	changes you are making here.
+
+		Name, Affiliation, Date:
+	Description of Modification:
+
+   *****************************************************************************/
 
 #pragma once
 
@@ -44,40 +44,40 @@
 
 SC_MODULE(simple_bus_test)
 {
-  // channels
-  sc_clock C1;
+	// channels
+	sc_clock C1;
 
-  // module instances
-  simple_bus_slow_mem            *mem_slow;
-  simple_bus                     *bus;
-  simple_bus_fast_mem            *mem_fast;
-  simple_bus_arbiter             *arbiter;
+	// module instances
+	simple_bus_slow_mem* mem_slow;
+	simple_bus* bus;
+	simple_bus_fast_mem* mem_fast;
+	simple_bus_arbiter* arbiter;
 
-  // constructor
-  SC_CTOR(simple_bus_test)
-    : C1("C1")
-  {
-    // create instances
-    mem_fast = new simple_bus_fast_mem("mem_fast", 0x00, 0x7f);
-    mem_slow = new simple_bus_slow_mem("mem_slow", 0x80, 0xff, 1);
-    bus = new simple_bus("bus");
-    arbiter = new simple_bus_arbiter("arbiter");
+	// constructor
+	SC_CTOR(simple_bus_test)
+		: C1("C1")
+	{
+		// create instances
+		mem_fast = new simple_bus_fast_mem("mem_fast", 0x00, 0x7f);
+		mem_slow = new simple_bus_slow_mem("mem_slow", 0x80, 0xff, 1);
+		bus = new simple_bus("bus");
+		arbiter = new simple_bus_arbiter("arbiter");
 
-    // connect instances
-    bus->clock(C1);
-    mem_slow->clock(C1);
-    bus->arbiter_port(*arbiter);
-    bus->slave_port(*mem_slow);
-    bus->slave_port(*mem_fast);
-  }
+		// connect instances
+		bus->clock(C1);
+		mem_slow->clock(C1);
+		bus->arbiter_port(*arbiter);
+		bus->slave_port(*mem_slow);
+		bus->slave_port(*mem_fast);
+	}
 
-  // destructor
-  ~simple_bus_test()
-  {
-    if (mem_slow) {delete mem_slow; mem_slow = 0;}
-    if (bus) {delete bus; bus = 0;}
-    if (mem_fast) {delete mem_fast; mem_fast = 0;}
-    if (arbiter) {delete arbiter; arbiter = 0;}
-  }
+	// destructor
+	~simple_bus_test()
+	{
+		if (mem_slow) { delete mem_slow; mem_slow = 0; }
+		if (bus) { delete bus; bus = 0; }
+		if (mem_fast) { delete mem_fast; mem_fast = 0; }
+		if (arbiter) { delete arbiter; arbiter = 0; }
+	}
 
 }; // end class simple_bus_test

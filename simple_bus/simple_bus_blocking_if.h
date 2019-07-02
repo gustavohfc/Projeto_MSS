@@ -7,7 +7,7 @@
   (the "License"); you may not use this file except in compliance with the
   License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,42 +17,42 @@
 
  *****************************************************************************/
 
-/*****************************************************************************
- 
-  simple_bus_blocking_if.h : The blocking bus interface.
- 
-  Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
- 
- *****************************************************************************/
- 
-/*****************************************************************************
- 
-  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
-  changes you are making here.
- 
-      Name, Affiliation, Date:
-  Description of Modification:
- 
- *****************************************************************************/
+ /*****************************************************************************
+
+   simple_bus_blocking_if.h : The blocking bus interface.
+
+   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
+
+  *****************************************************************************/
+
+  /*****************************************************************************
+
+	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+	changes you are making here.
+
+		Name, Affiliation, Date:
+	Description of Modification:
+
+   *****************************************************************************/
 
 #pragma once
 
 #include "simple_bus_types.h"
 
 class simple_bus_blocking_if
-  : public virtual sc_interface
+	: public virtual sc_interface
 {
 public:
-  // blocking BUS interface
-  virtual simple_bus_status burst_read(unsigned int unique_priority
-				       , int *data
-				       , unsigned int start_address
-				       , unsigned int length = 1
-				       , bool lock = false) = 0;
-  virtual simple_bus_status burst_write(unsigned int unique_priority
-					, int *data
-					, unsigned int start_address
-					, unsigned int length = 1
-					, bool lock = false) = 0;
+	// blocking BUS interface
+	virtual simple_bus_status burst_read(unsigned int unique_priority
+		, int* data
+		, unsigned int start_address
+		, unsigned int length = 1
+		, bool lock = false) = 0;
+	virtual simple_bus_status burst_write(unsigned int unique_priority
+		, int* data
+		, unsigned int start_address
+		, unsigned int length = 1
+		, bool lock = false) = 0;
 
 }; // end class simple_bus_blocking_if

@@ -7,7 +7,7 @@
   (the "License"); you may not use this file except in compliance with the
   License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,23 +17,23 @@
 
  *****************************************************************************/
 
-/*****************************************************************************
- 
-  simple_bus_fast_mem.h : The memory (slave) without wait states.
- 
-  Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
- 
- *****************************************************************************/
- 
-/*****************************************************************************
- 
-  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
-  changes you are making here.
- 
-      Name, Affiliation, Date:
-  Description of Modification:
- 
- *****************************************************************************/
+ /*****************************************************************************
+
+   simple_bus_fast_mem.h : The memory (slave) without wait states.
+
+   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
+
+  *****************************************************************************/
+
+  /*****************************************************************************
+
+	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+	changes you are making here.
+
+		Name, Affiliation, Date:
+	Description of Modification:
+
+   *****************************************************************************/
 
 #pragma once
 
@@ -42,83 +42,83 @@
 
 
 class simple_bus_fast_mem
-  : public simple_bus_slave_if
-  , public sc_module
+	: public simple_bus_slave_if
+	, public sc_module
 {
 public:
-  // constructor
-  simple_bus_fast_mem(sc_module_name name_
-		      , unsigned int start_address
-		      , unsigned int end_address)
-    : sc_module(name_)
-    , m_start_address(start_address)
-    , m_end_address(end_address)
-  {
-    sc_assert(m_start_address <= m_end_address);
-    sc_assert((m_end_address-m_start_address+1)%4 == 0);
-    unsigned int size = (m_end_address-m_start_address+1)/4;
-    MEM = new int [size];
-    for (unsigned int i = 0; i < size; ++i)
-      MEM[i] = 0;
-  }
+	// constructor
+	simple_bus_fast_mem(sc_module_name name_
+		, unsigned int start_address
+		, unsigned int end_address)
+		: sc_module(name_)
+		, m_start_address(start_address)
+		, m_end_address(end_address)
+	{
+		sc_assert(m_start_address <= m_end_address);
+		sc_assert((m_end_address - m_start_address + 1) % 4 == 0);
+		unsigned int size = (m_end_address - m_start_address + 1) / 4;
+		MEM = new int[size];
+		for (unsigned int i = 0; i < size; ++i)
+			MEM[i] = 0;
+	}
 
-  // destructor
-  ~simple_bus_fast_mem();
+	// destructor
+	~simple_bus_fast_mem();
 
-  // direct Slave Interface
-  bool direct_read(int *data, unsigned int address);
-  bool direct_write(int *data, unsigned int address);
+	// direct Slave Interface
+	bool direct_read(int* data, unsigned int address);
+	bool direct_write(int* data, unsigned int address);
 
-  // Slave Interface
-  simple_bus_status read(int *data, unsigned int address);
-  simple_bus_status write(int *data, unsigned int address);
+	// Slave Interface
+	simple_bus_status read(int* data, unsigned int address);
+	simple_bus_status write(int* data, unsigned int address);
 
-  unsigned int start_address() const;
-  unsigned int end_address() const;
+	unsigned int start_address() const;
+	unsigned int end_address() const;
 
 private:
-  int * MEM;
-  unsigned int m_start_address;
-  unsigned int m_end_address;
+	int* MEM;
+	unsigned int m_start_address;
+	unsigned int m_end_address;
 
 }; // end class simple_bus_fast_mem
 
-inline bool simple_bus_fast_mem::direct_read(int *data, unsigned int address)
+inline bool simple_bus_fast_mem::direct_read(int* data, unsigned int address)
 {
-  return (read(data, address) == SIMPLE_BUS_OK);
+	return (read(data, address) == SIMPLE_BUS_OK);
 }
 
-inline bool simple_bus_fast_mem::direct_write(int *data, unsigned int address)
+inline bool simple_bus_fast_mem::direct_write(int* data, unsigned int address)
 {
-  return (write(data, address) == SIMPLE_BUS_OK);
+	return (write(data, address) == SIMPLE_BUS_OK);
 }
 
-inline simple_bus_status simple_bus_fast_mem::read(int *data
-						   , unsigned int address)
+inline simple_bus_status simple_bus_fast_mem::read(int* data
+	, unsigned int address)
 {
-  *data = MEM[(address - m_start_address)/4];
-  return SIMPLE_BUS_OK;
+	*data = MEM[(address - m_start_address) / 4];
+	return SIMPLE_BUS_OK;
 }
 
-inline simple_bus_status simple_bus_fast_mem::write(int *data
-						    , unsigned int address)
+inline simple_bus_status simple_bus_fast_mem::write(int* data
+	, unsigned int address)
 {
-  MEM[(address - m_start_address)/4] = *data;
-  return SIMPLE_BUS_OK;
+	MEM[(address - m_start_address) / 4] = *data;
+	return SIMPLE_BUS_OK;
 }
 
 inline  simple_bus_fast_mem::~simple_bus_fast_mem()
 {
-  if (MEM) delete [] MEM;
-  MEM = (int *)0;
+	if (MEM) delete[] MEM;
+	MEM = (int*)0;
 }
 
 inline unsigned int simple_bus_fast_mem::start_address() const
 {
-  return m_start_address;
+	return m_start_address;
 }
 
 inline unsigned int simple_bus_fast_mem::end_address() const
 {
-  return m_end_address;
+	return m_end_address;
 }

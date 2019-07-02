@@ -7,7 +7,7 @@
   (the "License"); you may not use this file except in compliance with the
   License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,35 +17,37 @@
 
  *****************************************************************************/
 
-/*****************************************************************************
- 
-  simple_bus_types.h : The common types.
- 
-  Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
- 
- *****************************************************************************/
- 
-/*****************************************************************************
- 
-  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
-  changes you are making here.
- 
-      Name, Affiliation, Date:
-  Description of Modification:
- 
- *****************************************************************************/
+ /*****************************************************************************
+
+   simple_bus_types.h : The common types.
+
+   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
+
+  *****************************************************************************/
+
+  /*****************************************************************************
+
+	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+	changes you are making here.
+
+		Name, Affiliation, Date:
+	Description of Modification:
+
+   *****************************************************************************/
 
 #pragma once
 
-enum simple_bus_status { SIMPLE_BUS_OK = 0
-			 , SIMPLE_BUS_REQUEST
-			 , SIMPLE_BUS_WAIT
-			 , SIMPLE_BUS_ERROR };
+enum simple_bus_status {
+	SIMPLE_BUS_OK = 0
+	, SIMPLE_BUS_REQUEST
+	, SIMPLE_BUS_WAIT
+	, SIMPLE_BUS_ERROR
+};
 
 // needed for more readable debug output
-extern char simple_bus_status_str[4][20]; 
+extern char simple_bus_status_str[4][20];
 
 struct simple_bus_request;
-typedef std::vector<simple_bus_request *> simple_bus_request_vec;
+typedef std::vector<simple_bus_request*> simple_bus_request_vec;
 
-extern int sb_fprintf(FILE *, const char *, ...);
+extern int sb_fprintf(FILE*, const char*, ...);

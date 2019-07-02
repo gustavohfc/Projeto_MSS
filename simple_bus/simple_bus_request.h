@@ -7,7 +7,7 @@
   (the "License"); you may not use this file except in compliance with the
   License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,57 +17,58 @@
 
  *****************************************************************************/
 
-/*****************************************************************************
- 
-  simple_bus_request.h : The bus interface request form.
- 
-  Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
- 
- *****************************************************************************/
- 
-/*****************************************************************************
- 
-  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
-  changes you are making here.
- 
-      Name, Affiliation, Date:
-  Description of Modification:
- 
- *****************************************************************************/
+ /*****************************************************************************
+
+   simple_bus_request.h : The bus interface request form.
+
+   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
+
+  *****************************************************************************/
+
+  /*****************************************************************************
+
+	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+	changes you are making here.
+
+		Name, Affiliation, Date:
+	Description of Modification:
+
+   *****************************************************************************/
 
 #pragma once
 
-enum simple_bus_lock_status { SIMPLE_BUS_LOCK_NO = 0
-			      , SIMPLE_BUS_LOCK_SET
-			      , SIMPLE_BUS_LOCK_GRANTED 
+enum simple_bus_lock_status {
+	SIMPLE_BUS_LOCK_NO = 0
+	, SIMPLE_BUS_LOCK_SET
+	, SIMPLE_BUS_LOCK_GRANTED
 };
 
 struct simple_bus_request
 {
-  // parameters
-  unsigned int priority;
+	// parameters
+	unsigned int priority;
 
-  // request parameters
-  bool do_write;
-  unsigned int address;
-  unsigned int end_address;
-  int *data;
-  simple_bus_lock_status lock;
+	// request parameters
+	bool do_write;
+	unsigned int address;
+	unsigned int end_address;
+	int* data;
+	simple_bus_lock_status lock;
 
-  // request status
-  sc_event transfer_done;
-  simple_bus_status status;
+	// request status
+	sc_event transfer_done;
+	simple_bus_status status;
 
-  // default constructor
-  simple_bus_request();
+	// default constructor
+	simple_bus_request();
 };
 
 inline simple_bus_request::simple_bus_request()
-  : priority(0)
-  , do_write(false)
-  , address(0)
-  , end_address(0)
-  , data((int *)0)
-  , lock(SIMPLE_BUS_LOCK_NO)
-  , status(SIMPLE_BUS_OK)
+	: priority(0)
+	, do_write(false)
+	, address(0)
+	, end_address(0)
+	, data((int*)0)
+	, lock(SIMPLE_BUS_LOCK_NO)
+	, status(SIMPLE_BUS_OK)
 {}

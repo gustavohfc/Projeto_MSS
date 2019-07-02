@@ -7,7 +7,7 @@
   (the "License"); you may not use this file except in compliance with the
   License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,34 +17,34 @@
 
  *****************************************************************************/
 
-/*****************************************************************************
- 
-  simple_bus_tools.cpp : The signal-safe fprintf function (sb_fprintf).
- 
-  Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
- 
- *****************************************************************************/
- 
-/*****************************************************************************
- 
-  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
-  changes you are making here.
- 
-      Name, Affiliation, Date:
-  Description of Modification:
- 
- *****************************************************************************/
+ /*****************************************************************************
+
+   simple_bus_tools.cpp : The signal-safe fprintf function (sb_fprintf).
+
+   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
+
+  *****************************************************************************/
+
+  /*****************************************************************************
+
+	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+	changes you are making here.
+
+		Name, Affiliation, Date:
+	Description of Modification:
+
+   *****************************************************************************/
 
 #include "pch.h"
 
-int sb_fprintf(FILE *fp, const char *fmt, ...)
+int sb_fprintf(FILE* fp, const char* fmt, ...)
 {
-  va_list ap;
-  va_start(ap, fmt);
-  int ret = 0;
-  do {
-    errno = 0;
-    ret = vfprintf(fp, fmt, ap);
-  } while (errno == EINTR);
-  return ret;
+	va_list ap;
+	va_start(ap, fmt);
+	int ret = 0;
+	do {
+		errno = 0;
+		ret = vfprintf(fp, fmt, ap);
+	} while (errno == EINTR);
+	return ret;
 }

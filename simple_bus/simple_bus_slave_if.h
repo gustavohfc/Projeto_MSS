@@ -7,7 +7,7 @@
   (the "License"); you may not use this file except in compliance with the
   License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,23 +17,23 @@
 
  *****************************************************************************/
 
-/*****************************************************************************
- 
-  simple_bus_slave_if.h : The Slave interface.
- 
-  Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
- 
- *****************************************************************************/
- 
-/*****************************************************************************
- 
-  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
-  changes you are making here.
- 
-      Name, Affiliation, Date:
-  Description of Modification:
- 
- *****************************************************************************/
+ /*****************************************************************************
+
+   simple_bus_slave_if.h : The Slave interface.
+
+   Original Author: Ric Hilderink, Synopsys, Inc., 2001-10-11
+
+  *****************************************************************************/
+
+  /*****************************************************************************
+
+	MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+	changes you are making here.
+
+		Name, Affiliation, Date:
+	Description of Modification:
+
+   *****************************************************************************/
 
 #pragma once
 
@@ -42,15 +42,15 @@
 
 
 class simple_bus_slave_if
-  : public simple_bus_direct_if
+	: public simple_bus_direct_if
 {
 public:
-  // Slave interface
-  virtual simple_bus_status read(int *data, unsigned int address) = 0;
-  virtual simple_bus_status write(int *data, unsigned int address) = 0;
+	// Slave interface
+	virtual simple_bus_status read(int* data, unsigned int address) = 0;
+	virtual simple_bus_status write(int* data, unsigned int address) = 0;
 
-  virtual unsigned int start_address() const = 0;
-  virtual unsigned int end_address() const = 0;
+	virtual unsigned int start_address() const = 0;
+	virtual unsigned int end_address() const = 0;
 
 }; // end class simple_bus_slave_if
 
