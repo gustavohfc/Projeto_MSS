@@ -33,8 +33,16 @@ public:
 private:
 	void wait_loop();
 
+	void sha1Next();
+	void sha1Last();
+	void sha1Reset();
+
 	unsigned int nr_wait_states, wait_count;
 
-	uint32_t data[32];
+	uint8_t data[64];
 	uint32_t result[16];
+	uint32_t lastBlockSize;
+
+	uint32_t sha1Intermediate[5] = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0 };
+	uint64_t sha1Size = 0;
 };

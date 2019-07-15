@@ -56,6 +56,12 @@
     <ClInclude Include="hash\hash_module.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="hash\hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hash\hash_master.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -77,6 +83,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="hash\hash_module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hash\hash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hash\hash_master.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

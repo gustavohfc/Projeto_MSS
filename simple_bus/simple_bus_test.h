@@ -41,6 +41,8 @@
 #include "simple_bus.h"
 #include "simple_bus_fast_mem.h"
 #include "simple_bus_arbiter.h"
+#include "hash/hash_module.h"
+#include "hash/hash_master.h"
 
 SC_MODULE(simple_bus_test) {
 	// channels
@@ -51,6 +53,8 @@ SC_MODULE(simple_bus_test) {
 	simple_bus* bus;
 	simple_bus_fast_mem* mem_fast;
 	simple_bus_arbiter* arbiter;
+	hash_module* hasher;
+	hash_master* master;
 
 	// constructor
 	SC_CTOR(simple_bus_test)
@@ -61,12 +65,21 @@ SC_MODULE(simple_bus_test) {
 		bus = new simple_bus("bus");
 		arbiter = new simple_bus_arbiter("arbiter");
 
+		hasher = new hash_module("hasher", 3);
+		master = new hash_master("master", 1, false, 20);
+
 		// connect instances
 		bus->clock(C1);
 		mem_slow->clock(C1);
+		hasher->clock(C1);
+		master->clock(C1);
+
+		master->bus_port(*bus);
+
 		bus->arbiter_port(*arbiter);
 		bus->slave_port(*mem_slow);
 		bus->slave_port(*mem_fast);
+		bus->slave_port(*hasher);
 	}
 
 	// destructor
@@ -86,6 +99,14 @@ SC_MODULE(simple_bus_test) {
 		if (arbiter) {
 			delete arbiter;
 			arbiter = nullptr;
+		}
+		if (hasher) {
+			delete hasher;
+			hasher = nullptr;
+		}
+		if (master) {
+			delete master;
+			master = nullptr;
 		}
 	}
 
